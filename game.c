@@ -19,7 +19,7 @@ int main(void){
         read_advance(&current_room);
         break;
         case REST:
-        printf("You are resting.\n");
+        read_rest();
         break;
         case INTERACT:
         printf("You are interacting.\n");

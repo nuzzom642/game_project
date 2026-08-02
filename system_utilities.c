@@ -53,7 +53,7 @@ int read_menu_choice(int max){
 }
 
 enum read_idle read_idle(int current_room) {
-    printf("%s.\n", map[current_room].description);
+    printf("%s", map[current_room].description);
     if (combat_necessary(current_room)) {printf("Defend yourself!\n");}
     printf("What would you like to do?\n"
         "1. Advance\n"
@@ -107,4 +107,18 @@ void read_rest(void) {
     printf("1. Take a nap.\n");
     printf("2. View stats. \n");
     printf("3. Level Up!.\n");
+
+    int user_choice = read_menu_choice(3);
+    switch (user_choice){
+        case 1:
+        printf("You decide to take a nap. Restore health to max!\n");
+        break;
+        case 2:
+        printf("Going to stats menu.\n");
+        break;
+        case 3:
+        printf("Do you have enough experience?\n");
+        break;
+    }
+    
 }

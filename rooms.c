@@ -4,7 +4,7 @@
 struct room map[ROOM_COUNT]= {
     [ENTRY_HALL] = {
     .name = "Entry Hall",
-    .description = "You stand in a grand hall, warm orange light from braziers casting a soft glow upon the wooden walls. Doors lie to you north, south, east and west. \n",
+    .description = "You stand in a grand hall, warm orange light from braziers casting a soft glow upon the wooden walls. Doors lie to you north, south, east and west.\n",
     .explored = true,
     .exits = {[NORTH] = ROOM_1, [SOUTH] = NO_EXIT, [EAST] = ROOM_2, [WEST] = ROOM_3},
     .entities_present = false,
