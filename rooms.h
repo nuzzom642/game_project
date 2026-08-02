@@ -12,6 +12,7 @@ struct room
     char description[256];
     bool explored;
     int exits[DIR_COUNT];
+    bool entities_present;
 
 };
 
