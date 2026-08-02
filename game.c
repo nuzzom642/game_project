@@ -21,8 +21,6 @@ int main(void){
         case REST:
         read_rest();
         break;
-        case INTERACT:
-        printf("You are interacting.\n");
         break;
         case IDLE_INVALID:
         break;

@@ -9,7 +9,7 @@ enum read_result read_line(char *buf, size_t size);
 
 enum read_result get_input_or_exit(char *buf, size_t size);
 
-enum read_idle {ADVANCE, INTERACT, REST, IDLE_INVALID};
+enum read_idle {ADVANCE, REST, IDLE_INVALID};
 
 enum read_idle read_idle(int current_room);
 

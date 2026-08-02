@@ -57,17 +57,14 @@ enum read_idle read_idle(int current_room) {
     if (combat_necessary(current_room)) {printf("Defend yourself!\n");}
     printf("What would you like to do?\n"
         "1. Advance\n"
-        "2. Interact\n"
-        "3. Rest\n");
+        "2. Rest\n");
     
-    int user_choice = read_menu_choice(3);
+    int user_choice = read_menu_choice(2);
 
     switch (user_choice) {
         case 1:
         return ADVANCE;
         case 2:
-        return INTERACT;
-        case 3:
         return REST;
         default:
         return IDLE_INVALID;
@@ -91,6 +88,7 @@ void read_advance(int *current_room) {
     
     printf("You advance through the door to the %s.\n", dir_names[direction[user_choice]]);
     *current_room = map[*current_room].exits[direction[user_choice]];
+    map[*current_room].explored = true;
 }
 
 bool combat_necessary(int current_room) {
