@@ -13,7 +13,7 @@ struct room map[ROOM_COUNT]= {
 
     [ROOM_1] = {
         .name = "Room 1",
-        .description = "This is room 1.",
+        .description = "This is room 1.\n",
         .explored = false,
         .exits = {[NORTH] = NO_EXIT, [SOUTH] = ENTRY_HALL, [EAST] = NO_EXIT, [WEST] = NO_EXIT},
         .entities_present = true,
@@ -21,7 +21,7 @@ struct room map[ROOM_COUNT]= {
 
     [ROOM_2] = {
         .name = "Room 2",
-        .description = "Room 2",
+        .description = "Room 2.\n",
         .explored = false,
         .exits = {[NORTH] = NO_EXIT, [SOUTH] = NO_EXIT, [EAST] = NO_EXIT, [WEST] = ENTRY_HALL},
         .entities_present = true,
@@ -29,7 +29,7 @@ struct room map[ROOM_COUNT]= {
 
     [ROOM_3] = {
         .name = "Room 3",
-        .description = "Room 3",
+        .description = "Room 3.\n",
         .explored = false,
         .exits = {[NORTH] = NO_EXIT, [SOUTH] = NO_EXIT, [EAST] = ENTRY_HALL, [WEST] = NO_EXIT},
         .entities_present = false,

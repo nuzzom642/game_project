@@ -59,22 +59,17 @@ enum read_idle read_idle(int current_room) {
         "1. Advance\n"
         "2. Interact\n"
         "3. Rest\n");
-    char input[10] = {0};
-    enum read_result res = get_input_or_exit(input, sizeof(input));
     
-    if (res != READ_OK) {
-        printf("Invalid input. Please try again.\n");
-        return IDLE_INVALID;
-    }
+    int user_choice = read_menu_choice(3);
 
-    if (strcmp(input, "1") == 0) {
+    switch (user_choice) {
+        case 1:
         return ADVANCE;
-    } else if (strcmp(input, "2") == 0) {
+        case 2:
         return INTERACT;
-    } else if (strcmp(input, "3") == 0) {
+        case 3:
         return REST;
-    } else {
-        printf("Invalid input. Please try again.\n");
+        default:
         return IDLE_INVALID;
     }
 }
