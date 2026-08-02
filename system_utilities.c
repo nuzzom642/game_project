@@ -37,9 +37,9 @@ enum read_result get_input_or_exit(char *buf, size_t size){
 }
 
 
-enum read_idle read_idle(void) {
-    printf("You enter a room.\n" 
-        "What would you like to do?\n"
+enum read_idle read_idle(int *current) {
+    printf("%s.\n", map[*current].description);
+    printf("What would you like to do?\n"
         "1. Advance\n"
         "2. Interact\n"
         "3. Rest\n");
@@ -66,7 +66,7 @@ enum read_idle read_idle(void) {
 void read_advance(int *current) {
     printf("You are in %s.\n", room_names[*current]);
     int i = 1;
-    int direction[DIR_COUNT];
+    int direction[DIR_COUNT + 1];
     for (int d = 0; d < DIR_COUNT; d++) {
         if (map[*current].exits[d] != NO_EXIT){
             printf("%d, Go through the door to the %s.\n", i, dir_names[d]);
@@ -84,14 +84,11 @@ void read_advance(int *current) {
         res = get_input_or_exit(input, sizeof(input));
         user_choice = atoi(input);
 
-        if (res != READ_OK || user_choice > count || user_choice < 1) {
+        if (res != READ_OK || user_choice > count || user_choice <= 0) {
             printf("Invalid input. Please try again.\n");}
         else {
-            printf("You advance through the door to the %s.\n", dir_names[user_choice]);
+            printf("You advance through the door to the %s.\n", dir_names[direction[user_choice]]);
             *current = map[*current].exits[direction[user_choice]];
             }
     } while (res != READ_OK || user_choice > count || user_choice <= 0);
-    
-    
-    
 }

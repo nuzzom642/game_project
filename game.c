@@ -13,7 +13,7 @@ int main(void){
     while (result != READ_OK);
     int current = ENTRY_HALL;
     while (true) {
-    enum read_idle reading = read_idle();
+    enum read_idle reading = read_idle(&current);
     switch(reading) {
         case ADVANCE:
         read_advance(&current);
