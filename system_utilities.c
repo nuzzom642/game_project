@@ -97,3 +97,13 @@ void read_advance(int *current_room) {
 bool combat_necessary(int *current_room) {
     return map[*current_room].entities_present;
 }
+
+void read_rest(void) {
+    printf("What would you like to do?\n");
+    printf("1. Take a nap.\n");
+    printf("2. View stats. \n");
+    printf("3. Level Up!.\n");
+
+    char input[10];
+    enum read_result res = get_input_or_exit(input, sizeof(input));
+}

@@ -16,4 +16,6 @@ bool combat_necessary(int *current_room);
 
 void read_advance(int *current_room);
 
+void read_rest(void);
+
 #endif // SYSTEM_UTILITIES_H
