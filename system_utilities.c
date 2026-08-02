@@ -63,30 +63,35 @@ enum read_idle read_idle(void) {
     }
 }
 
-void read_advance(int current) {
-    printf("You are in %s.\n", room_names[current]);
+void read_advance(int *current) {
+    printf("You are in %s.\n", room_names[*current]);
     int i = 1;
-    int direction[10];
+    int direction[DIR_COUNT];
     for (int d = 0; d < DIR_COUNT; d++) {
-        if (map[current].exits[d] != NO_EXIT){
+        if (map[*current].exits[d] != NO_EXIT){
             printf("%d, Go through the door to the %s.\n", i, dir_names[d]);
             direction[i] = d;
             i++;
         }
     }
+    
+    int count = i - 1;
     char input[10] = {0};
-    enum read_result res = get_input_or_exit(input, sizeof(input));
+    enum read_result res;
+    int user_choice;
+    do 
+    {
+        res = get_input_or_exit(input, sizeof(input));
+        user_choice = atoi(input);
 
-    if (res != READ_OK) {
-        printf("Invalid input. Please try again.\n");}
-
-    if (strcmp(input, "1") == 0) {
-        printf("You advance to the %s.\n", dir_names[direction[1]]);
-    }
-    if (strcmp(input, "2") == 0){
-        printf("You advance to the %s.\n", dir_names[direction[2]]);
-    }
-    if (strcmp(input, "3") == 0) {
-        printf("You advance to the %s.\n", dir_names[direction[3]]);
-    }
+        if (res != READ_OK || user_choice > count || user_choice < 1) {
+            printf("Invalid input. Please try again.\n");}
+        else {
+            printf("You advance through the door to the %s.\n", dir_names[user_choice]);
+            *current = map[*current].exits[direction[user_choice]];
+            }
+    } while (res != READ_OK || user_choice > count || user_choice <= 0);
+    
+    
+    
 }

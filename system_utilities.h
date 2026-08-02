@@ -12,6 +12,6 @@ enum read_idle {ADVANCE, INTERACT, REST, IDLE_INVALID};
 
 enum read_idle read_idle(void);
 
-void read_advance(int);
+void read_advance(int *buf);
 
 #endif // SYSTEM_UTILITIES_H

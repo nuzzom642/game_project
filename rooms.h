@@ -1,5 +1,6 @@
 #ifndef ROOMS_H
 #define ROOMS_H
+#include <stdbool.h>
 
 enum direction {NORTH, SOUTH, EAST, WEST, DIR_COUNT};
 

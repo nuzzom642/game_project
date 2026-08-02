@@ -16,7 +16,7 @@ int main(void){
     enum read_idle reading = read_idle();
     switch(reading) {
         case ADVANCE:
-        read_advance(current);
+        read_advance(&current);
         break;
         case REST:
         printf("You are resting.\n");
