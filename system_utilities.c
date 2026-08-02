@@ -61,3 +61,6 @@ enum read_idle read_idle(void) {
     }
 }
 
+void read_advance(void) {
+    
+}
