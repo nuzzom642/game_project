@@ -12,8 +12,6 @@ enum read_idle {ADVANCE, INTERACT, REST, IDLE_INVALID};
 
 enum read_idle read_idle(void);
 
-enum advance_result {NORTH, SOUTH, EAST, WEST, ADV_INVALID};
-
-void read_advance(void);
+void read_advance(int);
 
 #endif // SYSTEM_UTILITIES_H

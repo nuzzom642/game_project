@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <ctype.h>
 #include <string.h>
 #include "system_utilities.h"
+#include "rooms.h"
 
 enum read_result read_line(char *buf, size_t size) {
     char *result = fgets(buf, size, stdin);
@@ -61,6 +63,30 @@ enum read_idle read_idle(void) {
     }
 }
 
-void read_advance(void) {
-    
+void read_advance(int current) {
+    printf("You are in %s.\n", room_names[current]);
+    int i = 1;
+    int direction[10];
+    for (int d = 0; d < DIR_COUNT; d++) {
+        if (map[current].exits[d] != NO_EXIT){
+            printf("%d, Go through the door to the %s.\n", i, dir_names[d]);
+            direction[i] = d;
+            i++;
+        }
+    }
+    char input[10] = {0};
+    enum read_result res = get_input_or_exit(input, sizeof(input));
+
+    if (res != READ_OK) {
+        printf("Invalid input. Please try again.\n");}
+
+    if (strcmp(input, "1") == 0) {
+        printf("You advance to the %s.\n", dir_names[direction[1]]);
+    }
+    if (strcmp(input, "2") == 0){
+        printf("You advance to the %s.\n", dir_names[direction[2]]);
+    }
+    if (strcmp(input, "3") == 0) {
+        printf("You advance to the %s.\n", dir_names[direction[3]]);
+    }
 }

@@ -32,3 +32,17 @@ struct room map[ROOM_COUNT]= {
     }
 
 };
+
+const char *const dir_names[DIR_COUNT] = {
+    [NORTH] = "north",
+    [SOUTH] = "south",
+    [EAST] = "east", 
+    [WEST] = "west",
+};
+
+const char *const room_names[ROOM_COUNT] = {
+    [ENTRY_HALL] = "the Entry Hall",
+    [ROOM_1] = "the First Room",
+    [ROOM_2] = "the Second Room",
+    [ROOM_3] = "the Third Room",
+};
