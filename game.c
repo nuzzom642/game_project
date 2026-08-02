@@ -11,12 +11,12 @@ int main(void){
     printf("What is your name?: ");
     result = read_line(player1.base.name, sizeof(player1.base.name));}
     while (result != READ_OK);
-    int current = ENTRY_HALL;
+    int current_room = ENTRY_HALL;
     while (true) {
-    enum read_idle reading = read_idle(&current);
+    enum read_idle reading = read_idle(current_room);
     switch(reading) {
         case ADVANCE:
-        read_advance(&current);
+        read_advance(&current_room);
         break;
         case REST:
         printf("You are resting.\n");

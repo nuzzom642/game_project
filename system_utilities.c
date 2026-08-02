@@ -35,10 +35,25 @@ enum read_result get_input_or_exit(char *buf, size_t size){
     }
     return result;
 }
+int read_menu_choice(int max){
+    char input[10];
+    enum read_result result;
+    int user_choice;
+    bool valid_choice;
 
+    do{
+        result = get_input_or_exit(input, sizeof(input));
+        user_choice = atoi(input);
+        if (result != READ_OK || user_choice > max || user_choice <= 0){
+            valid_choice = false;
+            printf("Invalid choice. Please try again.\n");}
+        else {valid_choice = true;}
+        }while (valid_choice == false);
+   return user_choice;
+}
 
-enum read_idle read_idle(int *current_room) {
-    printf("%s.\n", map[*current_room].description);
+enum read_idle read_idle(int current_room) {
+    printf("%s.\n", map[current_room].description);
     if (combat_necessary(current_room)) {printf("Defend yourself!\n");}
     printf("What would you like to do?\n"
         "1. Advance\n"
@@ -77,25 +92,14 @@ void read_advance(int *current_room) {
     }
     
     int count = i - 1;
-    char input[10] = {0};
-    enum read_result res;
-    int user_choice;
-    do 
-    {
-        res = get_input_or_exit(input, sizeof(input));
-        user_choice = atoi(input);
-
-        if (res != READ_OK || user_choice > count || user_choice <= 0) {
-            printf("Invalid input. Please try again.\n");}
-        else {
-            printf("You advance through the door to the %s.\n", dir_names[direction[user_choice]]);
-            *current_room = map[*current_room].exits[direction[user_choice]];
-            }
-    } while (res != READ_OK || user_choice > count || user_choice <= 0);
+    int user_choice = read_menu_choice(count);
+    
+    printf("You advance through the door to the %s.\n", dir_names[direction[user_choice]]);
+    *current_room = map[*current_room].exits[direction[user_choice]];
 }
 
-bool combat_necessary(int *current_room) {
-    return map[*current_room].entities_present;
+bool combat_necessary(int current_room) {
+    return map[current_room].entities_present;
 }
 
 void read_rest(void) {
@@ -103,7 +107,4 @@ void read_rest(void) {
     printf("1. Take a nap.\n");
     printf("2. View stats. \n");
     printf("3. Level Up!.\n");
-
-    char input[10];
-    enum read_result res = get_input_or_exit(input, sizeof(input));
 }

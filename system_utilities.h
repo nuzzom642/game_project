@@ -1,6 +1,7 @@
 #ifndef SYSTEM_UTILITIES_H
 #define SYSTEM_UTILITIES_H
 #include <stddef.h>
+#include <stdbool.h>
 
 enum read_result {READ_OK, READ_EMPTY, READ_TOO_LONG, READ_EOF};
 
@@ -10,12 +11,14 @@ enum read_result get_input_or_exit(char *buf, size_t size);
 
 enum read_idle {ADVANCE, INTERACT, REST, IDLE_INVALID};
 
-enum read_idle read_idle(int *current_room);
+enum read_idle read_idle(int current_room);
 
-bool combat_necessary(int *current_room);
+bool combat_necessary(int current_room);
 
 void read_advance(int *current_room);
 
 void read_rest(void);
+
+int read_menu_choice(int max);
 
 #endif // SYSTEM_UTILITIES_H
