@@ -6,9 +6,9 @@ CFLAGS = -Wall -Wextra -std=c99 -g
 TARGET = game
 
 # Source files and Object files
-SRCS = game.c system_utilities.c entities.c rooms.c
+SRCS = game.c system_utilities.c entities.c rooms.c combat_system.c
 OBJS = $(SRCS:.c=.o)
-HEADERS = entities.h system_utilities.h rooms.h
+HEADERS = entities.h system_utilities.h rooms.h combat_system.h
 
 # Default rule (built when running 'make')
 all: $(TARGET)

@@ -5,6 +5,7 @@
 #include <string.h>
 #include "system_utilities.h"
 #include "rooms.h"
+#include "combat_system.h"
 
 enum read_result read_line(char *buf, size_t size) {
     char *result = fgets(buf, size, stdin);
@@ -54,7 +55,7 @@ int read_menu_choice(int max){
 
 enum read_idle read_idle(int current_room) {
     printf("%s", map[current_room].description);
-    if (combat_necessary(current_room)) {printf("Defend yourself!\n");}
+    if (combat_necessary(current_room)) {combat_loop(&player1);}
     printf("What would you like to do?\n"
         "1. Advance\n"
         "2. Rest\n");

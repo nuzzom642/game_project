@@ -2,6 +2,7 @@
 #define SYSTEM_UTILITIES_H
 #include <stddef.h>
 #include <stdbool.h>
+#include "combat_system.h"
 
 enum read_result {READ_OK, READ_EMPTY, READ_TOO_LONG, READ_EOF};
 
